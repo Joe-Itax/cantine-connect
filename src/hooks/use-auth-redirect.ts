@@ -4,27 +4,58 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthUserQuery } from "./use-auth-user";
 
-export function useAuthRedirect({
-  ifAuthenticated,
-  ifUnauthenticated,
-}: {
-  ifAuthenticated?: string;
+type RedirectParams = {
+  ifAuthenticatedParent?: string;
+  ifAuthenticatedAgent?: string;
   ifUnauthenticated?: string;
-}) {
+};
+
+export function useAuthRedirect(params: RedirectParams) {
+  const { ifAuthenticatedParent, ifAuthenticatedAgent, ifUnauthenticated } =
+    params;
   const router = useRouter();
   const { data: user, isLoading } = useAuthUserQuery();
 
   useEffect(() => {
     if (isLoading) return;
 
-    if (user && ifAuthenticated) {
-      router.replace(ifAuthenticated);
-    }
+    try {
+      if (
+        !ifAuthenticatedParent &&
+        !ifAuthenticatedAgent &&
+        !ifUnauthenticated
+      ) {
+        console.warn(
+          "useAuthRedirect devrait être utilisé avec au moins un paramètre"
+        );
+      }
 
-    if (!user && ifUnauthenticated) {
-      router.replace(ifUnauthenticated);
+      if (user && user.role === "parent" && ifAuthenticatedParent) {
+        router.replace(ifAuthenticatedParent);
+      }
+
+      if (
+        user &&
+        (user.role === "agent" || user?.role === "admin") &&
+        ifAuthenticatedAgent
+      ) {
+        router.replace(ifAuthenticatedAgent);
+      }
+
+      if (!user && ifUnauthenticated) {
+        router.replace(ifUnauthenticated);
+      }
+    } catch (error) {
+      console.error("Redirect error:", error);
     }
-  }, [user, isLoading, ifAuthenticated, ifUnauthenticated, router]);
+  }, [
+    user,
+    isLoading,
+    router,
+    ifAuthenticatedParent,
+    ifAuthenticatedAgent,
+    ifUnauthenticated,
+  ]);
 
   return { user, isLoading };
 }

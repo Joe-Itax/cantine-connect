@@ -3,21 +3,21 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
-  EnrolledStudent,
+  //   EnrolledStudent,
   CanteenStudent,
   Notification,
   Meal,
 } from "@/types/student";
-import { useState } from "react";
+// import { useState } from "react";
 import { useNotification } from "@/hooks/use-notification";
 
-interface GetCanteenStudentsResponse {
-  totalItems: number;
-  limitPerPage: number;
-  totalPages: number;
-  currentPage: number;
-  data: CanteenStudent[];
-}
+// interface GetCanteenStudentsResponse {
+//   totalItems: number;
+//   limitPerPage: number;
+//   totalPages: number;
+//   currentPage: number;
+//   data: CanteenStudent[];
+// }
 
 // === ENROLLED STUDENTS ===
 /*

@@ -8,9 +8,11 @@ import { LoginForm } from "./components/login-form";
 // import { DashboardSkeleton } from "../dashboard/skeleton";
 import { useAuthRedirect } from "@/hooks/use-auth-redirect";
 
-
 export default function Login() {
-  const { isLoading } = useAuthRedirect({ ifAuthenticated: "/dashboard" });
+  const { isLoading } = useAuthRedirect({
+    ifAuthenticatedParent: "/parent",
+    ifAuthenticatedAgent: "/agent",
+  });
 
   if (isLoading) {
     // return <DashboardSkeleton />;
