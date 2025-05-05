@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ReactQueryProvider } from "@/providers/react-query-provider";
+import { NotificationManager } from "@/components/notification-manager";
 import "@/app/styles/globals.css";
 
 const geistSans = Geist({
@@ -24,9 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <ReactQueryProvider>
+          <NotificationManager />
+          {children}
+        </ReactQueryProvider>
       </body>
     </html>
   );
