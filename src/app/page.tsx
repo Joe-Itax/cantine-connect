@@ -1,7 +1,8 @@
 "use client";
 
-// import Image from 'next/image';
+import Image from "next/image";
 import Header from "./components/header/header";
+// import Vector1 from "/public/vector-1.svg";
 
 export default function Home() {
   return (
@@ -10,25 +11,32 @@ export default function Home() {
       <Header />
       <main className="min-h-screen">
         {/* Hero Section */}
-        <section className="bg-purple-600 text-white pt-12 pb-20 relative">
+        <section className="bg-secondary text-white pt-36 pb-24 relative">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-bold max-w-xl mb-8">
               We deliver your food all over the city within 30 minutes
             </h1>
-
-            <div className="bg-white p-3 rounded-lg flex items-center max-w-md">
-              <input
-                type="text"
-                placeholder="Votre adresse"
-                className="flex-grow px-3 py-2 outline-none text-gray-800"
-              />
-              <button className="bg-orange-500 text-white px-4 py-2 rounded-md">
-                Search
-              </button>
-            </div>
           </div>
 
-          {/* Decorative elements would go here */}
+          {/* Decorative elements */}
+          <div className="absolute bottom-0 right-0 w-72">
+            <Image
+              src={`/vector-1.svg`}
+              alt="alt"
+              width={200}
+              height={200}
+              className="w-full"
+            />
+          </div>
+          <div className="absolute top-0 left-0 w-72">
+            <Image
+              src={`/vector-2.svg`}
+              alt="alt"
+              width={200}
+              height={200}
+              className="w-full"
+            />
+          </div>
         </section>
 
         {/* Stats Section */}
