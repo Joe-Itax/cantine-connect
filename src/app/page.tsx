@@ -1,54 +1,12 @@
 "use client";
 
 // import Image from 'next/image';
-import { useAuthRedirect } from "@/hooks/use-auth-redirect";
-import Link from "next/link";
 import Header from "./components/header/header";
 
 export default function Home() {
   return (
     <>
       {/* Header */}
-      {/* <header className="bg-purple-600 text-white py-4">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center text-purple-600 font-bold">
-              FC
-            </div>
-            <span className="font-medium">Food Delivery</span>
-          </div>
-
-          <nav className="hidden md:flex space-x-6">
-            <Link href="/" className="font-medium">
-              Home
-            </Link>
-            <Link href="/menu" className="font-medium">
-              Menu
-            </Link>
-            <Link href="/offers" className="font-medium">
-              Offres
-            </Link>
-            <Link href="/locations" className="font-medium">
-              Emplacements
-            </Link>
-            <Link href="/support" className="font-medium">
-              Support
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <Link href="/login" className="font-medium">
-              Login
-            </Link>
-            <Link
-              href="/register"
-              className="bg-white text-purple-600 px-4 py-2 rounded-md font-medium"
-            >
-              Register
-            </Link>
-          </div>
-        </div>
-      </header> */}
       <Header />
       <main className="min-h-screen">
         {/* Hero Section */}
